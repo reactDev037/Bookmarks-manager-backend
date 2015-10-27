@@ -1,0 +1,28 @@
+{
+  "name": "bookmark",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "folder": {
+      "type": "belongsTo",
+      "model": "folder",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

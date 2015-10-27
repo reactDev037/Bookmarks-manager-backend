@@ -8,14 +8,14 @@
  * Controller of the bookmarksApp
  */
 angular.module('bookmarksApp')
-  .controller('FolderCtrl', function ($scope,$location,  Folder) {
+  .controller('FolderCtrl', function ($scope,$location,  Folder,User) {
    //------------------------------------
     //folders related
     //------------------------------------
     //varaibles
     $scope.folders ={};
     //functionality
-    $scope.populateFolders = function () {
+    $scope.getFolders = function () {
       Folder.tree({}, {}, function (res) {
         console.log(res);
          $scope.folders = res.folders;
@@ -24,8 +24,18 @@ angular.module('bookmarksApp')
     $scope.folderNav = function(){
       $location.path("/folders/"+this.folder.id);
     }
+    $scope.createFolder = function () {
+      var name;
+      if (!(name = window.prompt("Folder Name", ""))) {
+        alert("Folder name cannot be null"); return;
+      }
+      var params = { name: name, userId: User.getCurrentId() };
+      Folder.create(params, function(){
+        $scope.getFolders();
+      });
+    }
     $scope.init = function(){
-      $scope.populateFolders();
+      $scope.getFolders();
     }
     $scope.init();
 

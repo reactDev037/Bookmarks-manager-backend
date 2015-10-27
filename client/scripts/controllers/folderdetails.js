@@ -36,8 +36,17 @@ angular.module('bookmarksApp')
           $scope.folder = {};
         });
     }
-
     $scope.createFolder = function () {
+      var name;
+      if (!(name = window.prompt("Folder Name", ""))) {
+        alert("Folder name cannot be null"); return;
+      }
+      var params = { name: name, "parentId": this.folder.id };
+      Folder.create(params, function(){
+        $scope.getFolder();
+      });
+    }
+    $scope.createBookmark = function () {
 
       //      console.log( this.folder.bookmarks.create() );return;
       var title;

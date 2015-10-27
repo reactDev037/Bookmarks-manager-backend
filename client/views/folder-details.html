@@ -1,6 +1,7 @@
 <legend><img src="images/icons/folder.png" alt=""> {{folder.name}}</legend>
 
-<button class="btn" ng-click="createFolder()">New</button>
+<button class="btn btn-success" ng-click="createBookmark()"><i class="glyphicon glyphicon-bookmark"></i> New Bookmark</button>
+<button class="btn btn-success" ng-click="createFolder()"><i class="glyphicon glyphicon-folder-open"></i> New Folder</button>
 <ul >
 
   <li class="grid-view-icons folder" ng-repeat="folder in folder.childFolders">

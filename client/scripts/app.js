@@ -24,17 +24,13 @@ angular
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .when('/folders', {
+        templateUrl: 'views/folder.html',
+        controller: 'FolderCtrl'
       })
-      .when('/details/:id', {
-        templateUrl: 'views/details.html',
-        controller: 'DetailsCtrl'
-      })
-      .when('/review/:id', {
-        templateUrl: 'views/review.html',
-        controller: 'ReviewCtrl'
+      .when('/folders/:id', {
+        templateUrl: 'views/folder-details.html',
+        controller: 'FolderDetailsCtrl'
       })
       .otherwise({
         redirectTo: '/'

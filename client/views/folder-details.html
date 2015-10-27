@@ -1,0 +1,21 @@
+<legend><img src="images/icons/folder.png" alt=""> {{folder.name}}</legend>
+
+<button class="btn" ng-click="createFolder()">New</button>
+<ul >
+
+  <li class="grid-view-icons folder" ng-repeat="folder in folder.childFolders">
+    <a onclick="javascript:void(0)" ng-click="folderNav()">
+    <div><img src="images/icons/folder.png" alt=""></div>
+    <div>{{ folder.name }}</div>
+    </a>
+  </li>
+
+  <li class="grid-view-icons bookmark" ng-repeat="bookmark in folder.bookmarks">
+    <a target="_blank" href="{{ bookmark.url }}">
+    <div><img src="images/icons/bookmark.png" alt=""></div>
+    <div>{{ bookmark.title }}</div>
+    </a>
+  </li>
+</ul>
+
+<div class="clear"></div>

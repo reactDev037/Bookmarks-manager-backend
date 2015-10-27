@@ -104,3 +104,18 @@ body {
     border-bottom: 0;
   }
 }
+
+
+/* Folders */
+.grid-view-icons{
+  list-style:none;
+  float:left;
+  text-align:center;
+  width : 15%;
+}
+.folder{
+
+}
+.clear{
+  clear:both;
+}

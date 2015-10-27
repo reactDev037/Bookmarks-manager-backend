@@ -1,7 +1,7 @@
 module.exports = function(Folder) {
   Folder.tree = function(cb) {
     var response;
-    Folder.find(  {
+    Folder.find({
     	include : [ "childFolders", "parentFolders","bookmarks"]
     },
       function(err,data) {
@@ -13,7 +13,6 @@ module.exports = function(Folder) {
              delete data[index];
            }
       	}
-        
      	cb( null, data.filter(function(e){return e}) );
       });
   }

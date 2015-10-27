@@ -1,0 +1,11 @@
+<legend>Your folders</legend>
+
+<ul>
+
+  <li class="grid-view-icons folder" ng-repeat="folder in folders">
+    <a onclick="javascript:void(0)" ng-click="folderNav()">
+    <div><img src="images/icons/folder.png" alt=""></div>
+    <div>{{ folder.name }}</div>
+    </a>
+  </li>
+</ul>

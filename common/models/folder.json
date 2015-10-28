@@ -27,6 +27,11 @@
       "type": "hasMany",
       "model": "bookmark",
       "foreignKey": ""
+    },
+    "user": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": ""
     }
   },
   "acls": [],

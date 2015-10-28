@@ -1,7 +1,10 @@
 <legend><img src="images/icons/folder.png" alt=""> {{folder.name}}</legend>
 
-<button class="btn btn-success" ng-click="createBookmark()"><i class="glyphicon glyphicon-bookmark"></i> New Bookmark</button>
-<button class="btn btn-success" ng-click="createFolder()"><i class="glyphicon glyphicon-folder-open"></i> New Folder</button>
+<div class="text-right">
+  <button class="btn btn-success btn-sm" ng-click="createBookmark()"><i class="glyphicon glyphicon-bookmark"></i> New Bookmark</button>
+  <button class="btn btn-success btn-sm" ng-click="createFolder()"><i class="glyphicon glyphicon-folder-open"></i> New Folder</button>
+</div>
+
 <ul >
 
   <li class="grid-view-icons folder" ng-repeat="folder in folder.childFolders">
@@ -11,7 +14,9 @@
     </a>
   </li>
 
-  <li class="grid-view-icons bookmark" ng-repeat="bookmark in folder.bookmarks">
+  <li title ="{{ bookmark.url }}" class="grid-view-icons bookmark" ng-repeat="bookmark in folder.bookmarks">
+      <button style="right:2px;" class="util-icon" ng-click="deleteBookmark()">X</button>
+      <button style="right:22px;" class="util-icon" ng-click="editBookmark()">edit</button>
     <a target="_blank" href="{{ bookmark.url }}">
     <div><img src="images/icons/bookmark.png" alt=""></div>
     <div>{{ bookmark.title }}</div>

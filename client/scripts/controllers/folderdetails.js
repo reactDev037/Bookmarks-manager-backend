@@ -8,7 +8,7 @@
  * Controller of the bookmarksApp
  */
 angular.module('bookmarksApp')
-  .controller('FolderDetailsCtrl', function ($scope, $routeParams, $location, Folder, Bookmark) {
+  .controller('FolderDetailsCtrl', function ($scope, $routeParams, $location, Folder, Bookmark, User) {
     //------------------------------------
     //folders related
     //------------------------------------
@@ -41,8 +41,12 @@ angular.module('bookmarksApp')
       if (!(name = window.prompt("Folder Name", ""))) {
         alert("Folder name cannot be null"); return;
       }
-      var params = { name: name, "parentId": this.folder.id };
-      Folder.create(params, function(){
+      var params = {
+        name: name,
+        "parentId": this.folder.id,
+        userId: User.getCurrentId()
+      };
+      Folder.create(params, function () {
         $scope.getFolder();
       });
     }
@@ -58,7 +62,11 @@ angular.module('bookmarksApp')
         alert("Url cannot be null"); return;
       }
       //console.log( title, url ,this.folder.id );
-      var params = { title: title, url: url, "folderId": this.folder.id };
+      var params = {
+        title: title,
+        url: url,
+        folderId: this.folder.id
+      };
       Bookmark.create(params,
         function (res) {
           $scope.getFolder();
@@ -81,6 +89,14 @@ angular.module('bookmarksApp')
 
     }
 
+    $scope.deleteBookmark = function(){
+      //console.log( this );
+      var params = { id : this.bookmark.id };
+      console.log ( params );
+      Bookmark.removeById( params,function(){
+        $scope.getFolder();
+      })
+    }
     $scope.init = function () {
       $scope.getFolder();
     }

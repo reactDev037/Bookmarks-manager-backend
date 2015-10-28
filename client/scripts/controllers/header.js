@@ -1,14 +1,17 @@
 angular.module('bookmarksApp')
   .controller('headerCtrl', function ($scope, $rootScope, $location, User) {
-    
+
     //listening to login events
     $rootScope.$on('loginEvent', function (event, data) {
       $scope.loginStatusUpdate();
     });
-    
-    //check if user logged in 
-    //and then redirect user to login page 
-    //and update the header 
+
+    $scope.isActive = function (viewLocation) {
+        return viewLocation === $location.path();
+    };
+    //check if user logged in
+    //and then redirect user to login page
+    //and update the header
     $scope.loginStatusUpdate = function () {
       if (!User.isAuthenticated() || !User.getCurrentId()) {
         $location.path('/login');

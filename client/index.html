@@ -2,7 +2,7 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Bookmarks Manager</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -24,8 +24,8 @@
     <div class="container">
       <div class="header" ng-controller="headerCtrl">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="#">Home</a></li>
-          <li class=""><a ng-href="#/folders">Folders</a></li>
+          <li ng-class="{ active: isActive('/')}"><a ng-href="#">Home</a></li>
+          <li ng-class="{ active: isActive('/folders')}"><a ng-href="#/folders">Folders</a></li>
           <!--<li><a ng-href="#/about">About</a></li>
           <li><a ng-href="#">Contact</a></li>-->
           <li ng-show="isLoggedIn"><a ng-href="#" ng-click="logout()">Logout</a></li>

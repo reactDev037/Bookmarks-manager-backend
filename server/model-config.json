@@ -37,10 +37,6 @@
     "dataSource": "db",
     "public": true
   },
-  "name": {
-    "dataSource": "db",
-    "public": true
-  },
   "user": {
     "dataSource": "db",
     "public": true

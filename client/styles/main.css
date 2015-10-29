@@ -48,7 +48,7 @@ body {
   margin-top: 0;
   margin-bottom: 0;
   line-height: 40px;
-  padding-bottom: 19px;
+  /*padding-bottom: 19px;*/
 }
 
 /* Custom page footer */
@@ -97,7 +97,7 @@ body {
   }
   /* Space out the masthead */
   .header {
-    margin-bottom: 30px;
+    /*margin-bottom: 30px;*/
   }
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
@@ -127,8 +127,12 @@ body {
   font-size: 0.5em;
   padding:2px 4px;
   line-height: 100%;
+  cursor:pointer;
 }
 .clear{
   clear:both;
   padding-top:20px;
+}
+legend{
+  line-height: 64px;
 }

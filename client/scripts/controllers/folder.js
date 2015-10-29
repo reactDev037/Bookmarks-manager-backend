@@ -43,7 +43,9 @@ angular.module('bookmarksApp')
     }
     $scope.createFolder = function () {
       var name;
-      if (!(name = window.prompt("Folder Name", ""))) {
+      name = window.prompt("Folder Name", "");
+      if (name === null) return;
+      if (!name) {
         alert("Folder name cannot be null"); return;
       }
       var params = {
@@ -55,6 +57,32 @@ angular.module('bookmarksApp')
         $scope.getFolders();
       });
     }
+    $scope.editFolder = function () {
+      var name;
+      name = window.prompt("Folder Name", this.folder.name);
+      if (name === null) return;
+      if (!name) {
+        alert("Folder name cannot be null"); return;
+      }
+      var params = {
+        where: {
+          id: this.folder.id
+        }
+      }
+      var postData = {
+        name: name
+      };
+      Folder.update(params, postData, function () {
+        $scope.getFolders();
+      });
+    }
+    $scope.deleteFolder = function(){
+      var params = { id : this.folder.id };
+      Folder.removeById( params, function(){
+        $scope.getFolders();
+      })
+    }
+
     $scope.init = function () {
       $scope.getFolders();
     }

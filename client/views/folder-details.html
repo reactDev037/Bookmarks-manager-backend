@@ -8,6 +8,8 @@
 <ul >
 
   <li class="grid-view-icons folder" ng-repeat="folder in folder.childFolders">
+    <button style="right:2px;" class="util-icon" ng-click="deleteFolder()">X</button>
+    <button style="right:22px;" class="util-icon" ng-click="editFolder()">edit</button>
     <a onclick="javascript:void(0)" ng-click="folderNav()">
     <div><img src="images/icons/folder.png" alt=""></div>
     <div>{{ folder.name }}</div>

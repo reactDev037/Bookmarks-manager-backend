@@ -38,7 +38,9 @@ angular.module('bookmarksApp')
     }
     $scope.createFolder = function () {
       var name;
-      if (!(name = window.prompt("Folder Name", ""))) {
+      name = window.prompt("Folder Name", "");
+      if ( name === null ) return;
+      if (!name) {
         alert("Folder name cannot be null"); return;
       }
       var params = {
@@ -55,13 +57,16 @@ angular.module('bookmarksApp')
       //      console.log( this.folder.bookmarks.create() );return;
       var title;
       var url;
-      if (!(title = window.prompt("Bookmark Title", ""))) {
+      title = window.prompt("Bookmark Title", "");
+      if ( title === null ) return;
+      if ( !title ) {
         alert("Title cannot be null"); return;
       }
-      if (!(url = window.prompt("Bookmark Url", ""))) {
+      url = window.prompt("Bookmark Url", "");
+      if ( url === null ) return;
+      if ( !url ) {
         alert("Url cannot be null"); return;
       }
-      //console.log( title, url ,this.folder.id );
       var params = {
         title: title,
         url: url,
@@ -88,14 +93,70 @@ angular.module('bookmarksApp')
       // })
 
     }
+    $scope.deleteFolder = function(){
+      var params = { id : this.folder.id };
+      Folder.removeById( params, function(){
+        $scope.getFolder();
+      })
+    }
+
+    $scope.editFolder = function(){
+      var name;
+      name = window.prompt("Folder Name", this.folder.name );
+      if ( name === null ) return;
+      if (!name) {
+        alert("Folder name cannot be null"); return;
+      }
+      var params = {
+        where : {
+          id : this.folder.id
+        }
+      }
+      var postData = {
+        name: name
+      };
+      Folder.update( params, postData, function(){
+        $scope.getFolder();
+      });
+    }
+
 
     $scope.deleteBookmark = function(){
       //console.log( this );
       var params = { id : this.bookmark.id };
-      console.log ( params );
+      //console.log ( params );
       Bookmark.removeById( params,function(){
         $scope.getFolder();
       })
+    }
+
+    $scope.editBookmark = function(){
+      var title;
+      var url;
+      title = window.prompt("Bookmark Title", this.bookmark.title);
+      if ( title === null ) return;
+      if ( !title ) {
+        alert("Title cannot be null"); return;
+      }
+      url = window.prompt("Bookmark Url", this.bookmark.url);
+      if ( url === null ) return;
+      if ( !url ) {
+        alert("Url cannot be null"); return;
+      }
+
+      var params = {
+        where : {
+          id : this.bookmark.id
+        }
+      };
+      var postData = {
+        title: title,
+        url : url
+      }
+      Bookmark.update ( params , postData , function(res){
+        //success
+        $scope.getFolder();
+      });
     }
     $scope.init = function () {
       $scope.getFolder();

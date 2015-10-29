@@ -2,8 +2,13 @@
 
 A simple CRUD application exploring Loopback framework
 
+## Getting started
+`npm install`
+Bower ( run `bower install` in `/client` folder given you have bower globally installed )
+
 ## Dependencies
 A running database ( in this current setup MongoDB )
+
 
 ## Models
 - user

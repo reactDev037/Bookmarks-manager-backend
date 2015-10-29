@@ -1,6 +1,9 @@
 angular.module('bookmarksApp')
   .controller('headerCtrl', function ($scope, $rootScope, $location, User) {
 
+    $rootScope.$on( '$routeChangeSuccess', function(scope,current,previous){
+      $scope.loginStatusUpdate();
+    })
     //listening to login events
     $rootScope.$on('loginEvent', function (event, data) {
       $scope.loginStatusUpdate();

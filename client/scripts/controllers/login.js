@@ -8,16 +8,28 @@
  * Controller of the bookmarksApp
  */
 angular.module('bookmarksApp')
-  .controller('LoginCtrl', function ($scope, $rootScope, $location, User) {
+  .controller('LoginCtrl', function ($scope, $rootScope, $location, $uibModal, User) {
 
     //variables
     $scope.showError = false;
     $scope.error_msg = "";
     $scope.user = {};
 
-    //check if user is logged in
-    if (User.isAuthenticated() || User.getCurrentId()) {
-      $location.path('/main')
+    $scope.init = function(){
+      //check if user is logged in
+      if (User.isAuthenticated() || User.getCurrentId()) {
+        $location.path('/main')
+      }
+    }
+
+    $scope.register = function(){
+      //var modal = 
+      $uibModal.open({
+        animation: true,
+        templateUrl: 'views/ui-util/register-modal.html',
+        controller: 'RegisterCtrl',
+        size: 'sm'
+      });
     }
 
     $scope.login = function () {
@@ -43,5 +55,7 @@ angular.module('bookmarksApp')
           $rootScope.$emit('loginEvent', 'fail login');
         })
     }
+
+    $scope.init();
 
   });

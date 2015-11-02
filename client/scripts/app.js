@@ -12,7 +12,8 @@ angular
   .module('bookmarksApp', [
     'ngResource',
     'ngRoute',
-    'lbServices'
+    'lbServices',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider

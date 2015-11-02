@@ -137,3 +137,6 @@ body {
 legend{
   line-height: 64px;
 }
+.modal-forms{
+  padding:10px;
+}
